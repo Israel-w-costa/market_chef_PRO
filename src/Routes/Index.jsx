@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from '../App'
+import Market from "../Pages/Market/Index";
+import Admin from "../Pages/Admin/Index";
 
 
 function RouterPath() {
@@ -7,6 +9,8 @@ function RouterPath() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} />
+                <Route path="/market" element={<Market/>} />
+                <Route path="/admin" element={<Admin/>} />
             </Routes>
         </BrowserRouter>
 
