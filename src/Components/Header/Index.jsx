@@ -9,7 +9,7 @@ export default function Header() {
     <header className="w-full shadow-sm bg-white">
       <nav className="flex justify-between items-center px-6 py-4">
 
-        <div className="flex gap-4 items-center cursor-pointer">
+        <NavLink to={"/"} className="flex gap-4 items-center cursor-pointer">
           <ChefHat className="bg-orange-500 w-12 h-12 p-2.5 border border-orange-500 rounded-xl text-white" />
           <div className="flex flex-col">
             <h1 className="text-2xl text-transparent bg-clip-text bg-[linear-gradient(135deg,rgb(255,107,53)_0%,rgb(255,184,48)_100%)]">
@@ -17,7 +17,7 @@ export default function Header() {
             </h1>
             <span className="text-sm text-gray-500">Receitas & Compras</span>
           </div>
-        </div>
+        </NavLink>
 
         <button 
           className="md:hidden"
