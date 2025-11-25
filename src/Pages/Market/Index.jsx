@@ -1,10 +1,12 @@
-import MainTemplate from "../../Templates/MainTemplate/Index"
+import Header from "../../Components/Header/Index"
+import Footer from "../../Components/Footer/Index"
 
 function Market() {
 
   return (
     <>
-    <MainTemplate/>
+    <Header/>
+    <Footer/>
     </>
   )
 }

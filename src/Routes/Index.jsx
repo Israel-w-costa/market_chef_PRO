@@ -8,7 +8,7 @@ function RouterPath() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} />
+                <Route index element={<App />} />
                 <Route path="/market" element={<Market/>} />
                 <Route path="/admin" element={<Admin/>} />
             </Routes>

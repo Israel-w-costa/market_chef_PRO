@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { ChefHat, ShoppingCart, User, Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -38,7 +38,7 @@ export default function Header() {
         >
           <NavLink 
           className={({isActive})=>
-          `flex gap-3 p-2 items-center rounded w-
+          `flex gap-3 p-2 items-center rounded
           ${isActive?"bg-red-400 text-white ":"hover:bg-orange-50"}`
         }
             to="/" 
