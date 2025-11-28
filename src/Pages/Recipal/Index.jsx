@@ -1,7 +1,7 @@
 import Header from "../../Components/Header/Index"
 import Footer from "../../Components/Footer/Index"
 import Banner from "./Banner"
-import RecipalList from "./RecipalList"
+import Main from "./Main"
 
 function Recipal() {
 
@@ -9,7 +9,7 @@ function Recipal() {
     <>
     <Header/>
     <Banner/>
-    <RecipalList/>
+    <Main/>
     <Footer/>
     </>
   )

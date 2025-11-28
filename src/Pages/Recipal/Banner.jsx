@@ -5,7 +5,7 @@ function Banner() {
   return (
     <section className="relative flex flex-col items-center justify-center text-white h-[650px] bg-[url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200')] bg-cover bg-center">
 
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+      <div className="absolute inset-0 bg-black/50 "></div>
 
       <div className="relative flex flex-col items-center px-4 md:px-0">
 
