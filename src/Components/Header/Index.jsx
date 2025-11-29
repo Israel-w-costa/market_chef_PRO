@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import LoginModal from "../LoginModal/Index";
 import { ChefHat, ShoppingCart, User, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const dialogRef = useRef(null);
+
+  const openModal =  () => dialogRef.current?.showModal();
 
   return (
-    <header className="w-full shadow-sm bg-white">
+    <header className="w-full shadow-sm bg-white sticky top-0 z-50">
       <nav className="flex justify-between items-center px-6 py-4">
 
         <NavLink to={"/"} className="flex gap-4 items-center cursor-pointer">
@@ -59,17 +63,16 @@ export default function Header() {
             <span className="text-xs">Market</span>
           </NavLink>
 
-          <NavLink 
-            to="/admin"
-            onClick={() => setOpen(false)}
+          <button className="flex gap-3 p-2 items-center hover:bg-orange-50 rounded cursor-pointer"
+            onClick={openModal}
           >
-            <button className="flex gap-3 p-2 items-center hover:bg-orange-50 rounded">
               <User className="p-1" />
               <span className="text-xs">Login</span>
-            </button>
-          </NavLink>
+          </button>
         </ul>
       </nav>
+
+      <LoginModal ref={dialogRef}/>
     </header>
   );
 }

@@ -27,7 +27,10 @@ function Recipal() {
               <article
                 key={recipe.id}
                 role="listitem"
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                className="
+              bg-white rounded-xl shadow-md overflow-hidden 
+                hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1
+                transition-all duration-200"
               >
                 <img
                   src={recipe.image_url}
