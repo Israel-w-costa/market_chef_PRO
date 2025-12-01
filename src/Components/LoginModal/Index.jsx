@@ -1,6 +1,7 @@
 import { forwardRef, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {useLogin} from "../../hooks/useLogin";
+import SingUp from "../Sign/Index";
 
 const LoginModal =
     forwardRef(
@@ -12,19 +13,22 @@ const LoginModal =
             const navigate = useNavigate();
             const [msgError, setMsgError] = useState("");
             const emailInput = useRef();
-            const senhaInput = useRef();
+            const passwordInput = useRef();
+            const signUp = useRef(null);
+            const singUpDilog = () => signUp.current?.showModal();
+            
             
             function handleForm(e) {
                 e.preventDefault();
 
                 const email = emailInput.current.value;
-                const senha = senhaInput.current.value;
+                const password = passwordInput.current.value;
 
                 if(!email.includes("@") || !email.includes(".com")) setMsgError("Error: email inválido");
-                if (senha.length < 8) setMsgError("Error: senha inválido");
+                if (password.length < 8) setMsgError("Error: senha inválido");
 
-                if (email && senha) {
-                    login(email, senha);
+                if (email && password) {
+                    login(email, password);
                     navigate("/admin");
                 }
 
@@ -38,30 +42,33 @@ const LoginModal =
                     </p>
 
                     <form onSubmit={e => handleForm(e)} className="mt-4 flex flex-col gap-4">
-                        <label htmlFor="email" className="text-sm text-gray-600">
+                        <label htmlFor="Login" className="text-sm text-gray-600">
                             Email
                         </label>
-                        <input type="text" name="email" id="email" className="border rounded p-2" ref={emailInput} required/>
+                        <input type="text" name="Login" id="emailLogin" className="border rounded p-2" ref={emailInput} placeholder="Seuemail@email.com" aria-label="seu email com @ e .com" required/>
 
-                        <label htmlFor="senha" className="text-sm text-gray-600">
+                        <label htmlFor="password" className="text-sm text-gray-600">
                             Senha
                         </label>
-                        <input type="password" name="senha" id="senha" className="border rounded p-2" ref={senhaInput} view required/>
+                        <input type="password" name="password" id="passwordLogin" className="border rounded p-2" ref={passwordInput} placeholder="8 digitos no minimo" aria-label="No minimo 8 digito" required/>
 
                         <div className="flex gap-2">
-                            <button className="bg-red-500 text-white px-4 py-2 rounded-md" 
+                            <button type="button" className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer" 
                             onClick={()=> ref.current.close()}
                             >
                                 Fechar
                             </button>
-                            <button className="bg-orange-500 text-white px-4 py-2 rounded-md">
+                            <button type="button" className="bg-orange-500 text-white px-4 py-2 rounded-md cursor-pointer"
+                            onClick={singUpDilog}
+                            >
                                 Casdastrar
                             </button>
-                            <button className="bg-green-700 text-white px-4 py-2 rounded-md">
+                            <button className="bg-green-700 text-white px-4 py-2 rounded-md cursor-pointer">
                                 Entrar
                             </button>
                         </div>
                     </form>
+                    <SingUp ref={signUp} LoginModal={ref}/>
                 </dialog>
             );
         });

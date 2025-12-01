@@ -5,9 +5,9 @@ import { ChefHat, ShoppingCart, User, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const dialogRef = useRef(null);
+  const loginRef = useRef(null);
 
-  const openModal =  () => dialogRef.current?.showModal();
+  const openModal =  () => loginRef.current?.showModal();
 
   return (
     <header className="w-full shadow-sm bg-white sticky top-0 z-50">
@@ -72,7 +72,7 @@ export default function Header() {
         </ul>
       </nav>
 
-      <LoginModal ref={dialogRef}/>
+      <LoginModal ref={loginRef}/>
     </header>
   );
 }
