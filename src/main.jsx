@@ -1,13 +1,15 @@
 import { StrictMode } from 'react'
 import ReactDOM from "react-dom/client";
 import RouterPath from './Routes/Index.jsx';
-import App from './App.jsx';
+import { UserProvider } from "./Context/UserContext.jsx"
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <StrictMode>
-    <RouterPath/>
+    <UserProvider>
+      <RouterPath />
+    </UserProvider>
   </StrictMode>,
 );
 

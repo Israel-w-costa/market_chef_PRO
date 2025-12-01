@@ -1,19 +1,23 @@
 import axios from "axios";
+import { useUser } from "../Context/useUser";
 
 export function useLogin() {
+  const { loginUser } = useUser();
+
   async function login(email, password) {
     try {
-      const resposta = await axios.post("http://localhost:4000/auth/login", {
+      const response = await axios.post("http://localhost:4000/auth/login", {
         email,
         password
       });
 
-      console.log("Login realizado!", resposta.data);
-      return resposta.data;
+      const userData = response.data.user;
+      loginUser(userData);
+
+      console.log("Logado com sucesso:", userData);
 
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      return null;
+      console.error("Erro no login:", error);
     }
   }
 

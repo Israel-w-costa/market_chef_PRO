@@ -2,8 +2,10 @@ import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import LoginModal from "../LoginModal/Index";
 import { ChefHat, ShoppingCart, User, Menu, X } from "lucide-react";
+import {useUser} from "../../Context/useUser"
 
 export default function Header() {
+  const {user} = useUser();
   const [open, setOpen] = useState(false);
   const loginRef = useRef(null);
 
@@ -67,7 +69,9 @@ export default function Header() {
             onClick={openModal}
           >
               <User className="p-1" />
-              <span className="text-xs">Login</span>
+              <span className="text-xs">
+                {user? user.name :"Login"}
+                </span>
           </button>
         </ul>
       </nav>
