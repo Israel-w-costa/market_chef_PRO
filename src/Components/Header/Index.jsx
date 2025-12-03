@@ -29,7 +29,7 @@ export default function Header() {
           className="md:hidden"
           onClick={() => setOpen(!open)}
         >
-          {open ? <X size={30} /> : <Menu size={30} />}
+          {open ? <X size={30} className="cursor-pointer" /> : <Menu size={30} className="cursor-pointer" />}
         </button>
 
         <ul

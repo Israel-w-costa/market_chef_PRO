@@ -1,8 +1,24 @@
 import { Search, ChefHat } from 'lucide-react';
+import { useRecipes } from "../../hooks/useRecipal";
 import Recipal from './Recipal';
+import { useState } from 'react';
 
 function Main() {
 
+  const { recipes } = useRecipes();
+  const [filter,setFilter] = useState("");
+
+  function handleSearch (e) {
+    const inputValue = e.target.value.toLowerCase();
+
+    const filtered = recipes.filter(recipe =>{
+      return recipe.title.toLowerCase().includes(inputValue)
+    } 
+    )
+    setFilter(()=>filtered)
+    console.log(filter)
+  }
+  
 
   return (
     <section className="p-4 bg-orange-100">
@@ -17,6 +33,7 @@ function Main() {
           type="text"
           name="search"
           id="search"
+          onChange={(e)=>handleSearch(e)}
           placeholder="Buscar Receitas por nome ou ingrediente..."
           className="w-full outline-none"
         />
@@ -26,7 +43,7 @@ function Main() {
         Receitas da Comunidade
       </h2>
 
-      <Recipal/>
+      <Recipal filter={filter}/>
 
 
     </section>
