@@ -7,10 +7,12 @@ export function UserProvider({ children }) {
 
     function loginUser(data) {
         setUser(data);
+         localStorage.setItem("user", JSON.stringify(data)); 
     }
     
     function logoutUser() {
         setUser(null);
+        localStorage.removeItem("user");
     }
 
     const value = { user, loginUser, logoutUser };
