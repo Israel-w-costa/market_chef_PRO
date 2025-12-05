@@ -7,6 +7,7 @@ export function UserProvider({ children }) {
 
     function loginUser(data) {
         setUser(data);
+        
          localStorage.setItem("user", JSON.stringify(data)); 
     }
     

@@ -1,15 +1,10 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import LoginModal from "../LoginModal/Index";
-import { ChefHat, ShoppingCart, User, Menu, X } from "lucide-react";
-import {useUser} from "../../Context/useUser"
+import { ChefHat, ShoppingCart, Menu, X } from "lucide-react";
+import UserMenu from "./UserMenu/Index";
 
 export default function Header() {
-  const {user} = useUser();
   const [open, setOpen] = useState(false);
-  const loginRef = useRef(null);
-
-  const openModal =  () => loginRef.current?.showModal();
 
   return (
     <header className="w-full shadow-sm bg-white sticky top-0 z-50">
@@ -25,7 +20,7 @@ export default function Header() {
           </div>
         </NavLink>
 
-        <button 
+        <button
           className="md:hidden"
           onClick={() => setOpen(!open)}
         >
@@ -42,41 +37,33 @@ export default function Header() {
             ${open ? "flex" : "hidden md:flex"}
           `}
         >
-          <NavLink 
-          className={({isActive})=>
-          `flex gap-3 p-2 items-center rounded
-          ${isActive?"bg-red-400 text-white ":"hover:bg-orange-50"}`
-        }
-            to="/" 
+          <NavLink
+            className={({ isActive }) =>
+              `flex gap-3 p-2 items-center rounded
+          ${isActive ? "bg-red-400 text-white " : "hover:bg-orange-50"}`
+            }
+            to="/"
             onClick={() => setOpen(false)}
           >
             <ChefHat className="p-1" />
             <span className="text-xs">Receitas</span>
           </NavLink>
 
-          <NavLink className={({isActive})=> 
-          `flex gap-3 p-2 items-center rounded
-           ${ isActive? "bg-red-400 text-white":"hover:bg-orange-50"}`
+          <NavLink className={({ isActive }) =>
+            `flex gap-3 p-2 items-center rounded
+           ${isActive ? "bg-red-400 text-white" : "hover:bg-orange-50"}`
           }
-            to="/market" 
+            to="/market"
             onClick={() => setOpen(false)}
           >
             <ShoppingCart className="p-1" />
             <span className="text-xs">Market</span>
           </NavLink>
 
-          <button className="flex gap-3 p-2 items-center hover:bg-orange-50 rounded cursor-pointer"
-            onClick={openModal}
-          >
-              <User className="p-1" />
-              <span className="text-xs">
-                {user? user.name :"Login"}
-                </span>
-          </button>
+          <UserMenu/>
         </ul>
       </nav>
 
-      <LoginModal ref={loginRef}/>
     </header>
   );
 }
