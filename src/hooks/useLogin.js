@@ -1,11 +1,11 @@
-import axios from "axios";
+import api from "../Services/api"
 import { useUser } from "../Context/useUser";
 
 export function useLogin() {
   const { loginUser } = useUser();
 
   async function login(email, password) {
-    const response = await axios.post("http://localhost:4000/auth/login", {
+    const response = await api.post("auth/logi", {
       email,
       password
     });

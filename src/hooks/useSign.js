@@ -1,10 +1,11 @@
-import axios from "axios"
+import api from "../Services/api";
 
 export function useSign() {
     async function register(name, email, password) {
         
         try {
-          const response = await axios.post("http://localhost:4000/auth/register", {
+          const response = await api.post("/auth/register", 
+            {
             name,
             email,
             password
