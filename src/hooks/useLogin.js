@@ -11,7 +11,12 @@ export function useLogin() {
     });
 
     const userData = response.data.user;
+    const token = response.data.token
     loginUser(userData);
+
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(userData))
+
     return userData;
   }
 

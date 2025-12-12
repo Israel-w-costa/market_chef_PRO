@@ -1,13 +1,17 @@
 import Header from "../../Components/Header/Index"
 import Footer from "../../Components/Footer/Index"
-import MarketMain from "./MarketMain/Index"
+import HeaderMarket from "./HeaderMarket"
+import RecipalMarket from "./RecipalMarket"
 
 function Market() {
 
   return (
     <>
     <Header/>
-    <MarketMain/>
+    <main className="bg-orange-100 p-12">
+    <HeaderMarket/>
+    <RecipalMarket/>
+    </main>
     <Footer/>
     </>
   )

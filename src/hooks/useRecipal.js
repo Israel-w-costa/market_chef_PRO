@@ -10,6 +10,7 @@ export function useRecipes() {
         try{
             const response = await api.get("/recipes");
             setRecipes(response.data);
+            console.log(response.data);
         }
         catch(error){
             setError("Error ao carregar receitas");

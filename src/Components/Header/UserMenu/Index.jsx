@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "lucide-react";
 import LoginModal from "../../LoginModal/Index";
 import { Link } from "react-router";
 
 function UserMenu() {
+    const navigate = useNavigate();
     const [openAdmin, setOpenAdmin] = useState("hidden");
     const loginRef = useRef(null);
     const openModal = () => loginRef.current?.showModal();
@@ -42,6 +44,12 @@ function UserMenu() {
 
                         <li>
                             <button
+                            onClick={()=> {
+                                localStorage.removeItem("token");
+                                localStorage.removeItem("user");
+                                navigate("/");
+                                
+                            }}
                                 className="block w-full text-center text-xs p-2 cursor-pointer hover:bg-orange-50"
                             >
                                 Sair
